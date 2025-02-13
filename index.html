@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidayat Habibi Ahmad</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            align-items: center;
+            
+        }
+
+        body {
+            background: #f1f5f9;
+            min-height: 100vh;
+            
+        }
+
+        /* Hero Section */
+        .hero {
+    position: relative;
+    background: linear-gradient(to right, #0f172a, #1e293b);
+    color: white;
+    padding: 6rem 2rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;  /* Menengahkan secara horizontal */
+    align-items: center;      /* Menengahkan secara vertikal */
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #0f172a;
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;       /* Menengahkan teks di dalam kontainer */
+    z-index: 2;
+}
+
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Footer Styles */
+.footer {
+    background: #0f172a;
+    color: #cbd5e1;
+    padding: 4rem 2rem;
+    margin-top: 4rem;
+    
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-section h3 {
+    color: #fff;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-links a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #5eead4;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: #cbd5e1;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #5eead4;
+}
+
+.copyright {
+    text-align: center;
+    padding: 1rem 0;
+    border-top: 1px solid #1e293b;
+    margin-top: 1rem;
+    font-family: 'Arial', sans-serif; /* Font yang lebih modern dan mudah dibaca */
+    color: #6c757d; /* Warna teks lebih lembut */
+    font-size: 0.875rem; /* Ukuran font lebih kecil untuk footer */
+    max-width: 1200px; /* Membatasi lebar agar tidak terlalu melebar */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.copyright a {
+    color: #1e293b; /* Warna link */
+    text-decoration: none;
+}
+
+.copyright a:hover {
+    color: #4e9af1; /* Warna link saat hover */
+    text-decoration: underline;
+    transition: color 0.3s ease, text-decoration 0.3s ease; /* Transisi smooth saat hover */
+}
+
+
+
+    .navbar-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(15, 23, 42, 0.95);
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #5eead4, #ddd6fe);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            max-width: 600px;
+        }
+
+        /* Category Filter */
+        .filters {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 9999px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            color: #475569;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-btn.active {
+            background: #0f172a;
+            color: white;
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(203, 213, 225, 0.3);
+            cursor: pointer;
+            
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .category-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .web { background: #ccfbf1; color: #0f766e; }
+        .mobile { background: #ffe4e6; color: #be123c; }
+        .uiux { background: #f3e8ff; color: #7e22ce; }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .card-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .card-links a {
+            color: #64748b;
+            transition: color 0.3s ease;
+        }
+
+        .card-links a:hover {
+            color: #0d9488;
+        }
+
+        .card-description {
+            color: #475569;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Popup Styles */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .popup-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+            background: white;
+            padding: 1rem;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .popup-image {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: -1.5rem;
+            right: -1.5rem;
+            background: white;
+            border: none;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #1e293b;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .popup-close:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+     
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Hidayat Habibi Ahmad</h1>
+            <p>Web Dev | Mobile Dev | UI/UX</p>
+        </div>
+    </section>
+    
+
+   
+    
+    <!-- Category Filters -->
+    <div class="filters">
+        <button class="filter-btn active" data-category="all">
+            <i class="fas fa-globe"></i> All Projects
+        </button>
+        <button class="filter-btn" data-category="web">
+            <i class="fas fa-code"></i> Web Development
+        </button>
+        <button class="filter-btn" data-category="mobile">
+            <i class="fas fa-mobile-alt"></i> Mobile Apps
+        </button>
+        <button class="filter-btn" data-category="uiux">
+            <i class="fas fa-palette"></i> UI/UX Design
+        </button>
+    </div>
+    <section id="projects">
+    <!-- Portfolio Grid -->
+    <div class="portfolio-grid" id="portfolio-grid">
+        <!-- Cards will be inserted here by JavaScript -->
+    </div>
+    </section>
+    <!-- Popup Modal -->
+    <div class="popup-overlay" id="imagePopup">
+        <div class="popup-content">
+            <button class="popup-close" onclick="closePopup()">
+                <i class="fas fa-times"></i>
+            </button>
+            <img class="popup-image" id="popupImage" src="" alt="Project Image">
+        </div>
+    </div>
+<!-- Add this before the closing </body> tag -->
+<section id="about">
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>About Me</h3>
+            <p>A passionate developer focused on creating beautiful and functional web experiences.</p>
+            <div class="social-links">
+                <a href="https://github.com/hidaytahabibi"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/hidayat-habibi-ahmad-149a25290/"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/hidayathabibi_"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#projects">Projects</a>
+                <a href="#about">About</a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <div class="footer-links">
+                <a href="mailto:hidayathabibi19@gmail.com"><i class="fas fa-envelope"></i> hidayathabibi19@gmail.com</a>
+                <a href="tel:+6285730268559"><i class="fas fa-phone"></i> +62 857 3026 8559</a>
+                <a href="https://maps.app.goo.gl/pi9zh6rXVGbm3M7f8"><i class="fas fa-map-marker-alt"></i> Gresik, Jawa Timur, Indonesia</a>
+
+            </div>
+        </div>
+    </div>
+</section>
+    <div class="copyright">
+        <p>&copy; 2024 Hidayat Habibi Ahmad. All rights reserved.</p>
+    </div>
+</footer>
+
+    <script>
+        // Portfolio Data
+        const portfolioItems = [
+            {
+                id: 1,
+                title: "E-Learning Website",
+                description: "Website E-Learning dengan dashboard admin dan user ",
+                category: "web",
+                technologies: ["Native", "Html", "Css", "Php", "MySql"],
+                imageUrl: "images/elearn.png", 
+                liveUrl: "images/elearn.png", 
+                
+            },
+            {
+                id: 2,
+                title: "Professional Sales Dashboard",
+                description: "Dashboard penjualan yang berisi bebagai menu seperti sales, orders, review, dan list customers",
+                category: "web",
+                technologies: ["Html", "Bootstrap"],
+                imageUrl: "images/dash.png", 
+                liveUrl: "images/dash.png",
+                
+            },
+            {
+                id: 3,
+                title: "Personal Website",
+                description: "Website personal yang berisi beberapa portofolio dan project yang sudah saya kerjakan",
+                category: "web",
+                technologies: [ "Html", "Bootstrap"],
+                imageUrl: "images/web.png", 
+                liveUrl: "images/web.png",
+                
+            },
+            {
+                id: 4,
+                title: "Simple Website",
+                description: "Website simple untuk petshop yang menyediakan katalog makanan, perlengkapan dan adopt",
+                category: "web",
+                technologies: ["Html", "Bootstrap"],
+                imageUrl: "images/web.png", 
+                liveUrl: "images/web.png",
+                
+            },
+            {
+                id: 5,
+                title: "Social Media Dashboard",
+                description: "Responsive web application for social media management and analytics",
+                category: "web",
+                technologies: ["Html", "Bootstrap"],
+                imageUrl: "images/paw.png", 
+                liveUrl: "images/paw.png",
+                
+            },
+            {
+                id: 6,
+                title: "Minimalist Furniture Website",
+                description: "UI/UX Website furniture dengan tampilan yang minimalist dan juga elegant",
+                category: "uiux",
+                technologies: ["Figma"],
+                imageUrl: "images/furn.png", 
+                liveUrl: "images/furn.png", 
+                
+            },
+            {
+                id: 7,
+                title: "Redesign Grab For Smartwatch",
+                description: "UI/UX untuk kebutuhan smartwatch dengan melakukan redesign aplikasi grab yang di implementasikan pada smartwatch",
+                category: "uiux",
+                technologies: ["Figma"],
+                imageUrl: "images/grab.png", 
+                liveUrl: "images/grab.png", 
+                
+            },
+            {
+                id: 8,
+                title: "UI/UX Bank Apps",
+                description: "UI/UX aplikasi bank dengan fitur yang kompleks",
+                category: "uiux",
+                technologies: ["Figma"],
+                imageUrl: "images/uibank.png", 
+                liveUrl: "images/uibank.png",
+                
+            },
+            {
+                id: 9,
+                title: "Talku Apps",
+                description: "UX/UX untuk aplikasi edukasi dan pemebelajaran bahasa isyarat",
+                category: "uiux",
+                technologies: ["Figma"],
+                imageUrl: "images/talku.png", 
+                liveUrl: "images/talku.png",
+              
+            },
+            {
+                id: 10,
+                title: "Mobile Bank Apps",
+                description: "Aplikasi perbankan menggunakan bahasa pemrograman dart",
+                category: "mobile",
+                technologies: ["Flutter","dart"],
+                imageUrl: "images/bank.png", 
+                liveUrl: "images/bank.png", 
+               
+            }
+        ];
+
+        // Function to create card HTML
+        function createCardHTML(item) {
+            const categoryLabel = {
+                web: 'Web Development',
+                mobile: 'Mobile App',
+                uiux: 'UI/UX Design'
+            };
+            return `
+                <div class="card" data-category="${item.category}" onclick="openPopup('${item.imageUrl}')">
+                    <div class="card-image">
+                        <img src="${item.imageUrl}" alt="${item.title}">
+                        <span class="category-tag ${item.category}">${categoryLabel[item.category]}</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3 class="card-title">${item.title}</h3>
+                            <div class="card-links">
+                                <a href="${item.liveUrl}" target="_blank" onclick="event.stopPropagation()">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <p class="card-description">${item.description}</p>
+                        <div class="tech-stack">
+                            ${item.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to filter portfolio items
+        function filterPortfolio(category) {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Popup functions
+        function openPopup(imageUrl) {
+            const popup = document.getElementById('imagePopup');
+            const popupImage = document.getElementById('popupImage');
+            popupImage.src = imageUrl;
+            popup.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('imagePopup');
+            popup.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Close popup when clicking outside the image
+        document.getElementById('imagePopup').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closePopup();
+            }
+        });
+
+        // Close popup with escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closePopup();
+            }
+        });
+
+        // Initialize portfolio
+        function initPortfolio() {
+            const grid = document.getElementById('portfolio-grid');
+            grid.innerHTML = portfolioItems.map(item => createCardHTML(item)).join('');
+
+            // Add filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    // Filter items
+                    filterPortfolio(button.dataset.category);
+                });
+            });
+        }
+        window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+        navbar.style.padding = '0.75rem 2rem';
+    } else {
+        navbar.style.background = 'rgba(15, 23, 42, 0.9)';
+        navbar.style.padding = '1rem 2rem';
+    }
+});
+
+// Mobile menu toggle
+function toggleMenu() {
+    const navbarLinks = document.getElementById('navbarLinks');
+    navbarLinks.classList.toggle('active');
+}
+
+// Close mobile menu when clicking a link
+document.querySelectorAll('.navbar-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        const navbarLinks = document.getElementById('navbarLinks');
+        navbarLinks.classList.remove('active');
+    });
+});
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initPortfolio);
+    </script>
+</body>
+</html>
